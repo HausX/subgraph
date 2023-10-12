@@ -1,0 +1,41 @@
+type Event {
+  eventId: BigInt!
+  creator: Bytes!
+  startTime: BigInt!
+  owner: Bytes!
+  metadata: String!
+  pieceCid: String!
+  streamURI: String!
+  maxTickets: BigInt!
+  currentSold: BigInt!
+  ticketPrice: BigInt!
+  tickets: [Ticket!]
+  tips: [Tip!]
+  highestTipper: Bytes!
+  highestTip: BigInt!
+}
+
+type Ticket {
+  eventId: BigInt!
+  ticketId: BigInt!
+  owner: Bytes!
+}
+
+type Tip {
+  eventId: BigInt!
+  tipper: Bytes!
+  amount: BigInt!
+}
+
+type Creator {
+  creator: Bytes!
+  events: [Event!]
+  income: BigInt!
+}
+
+type User {
+  user: Bytes!
+  tickets: [Ticket!]
+  tips: [Tip!]
+  nfts: [Event]!
+}

@@ -1,0 +1,14 @@
+{
+  "polygon-zkevm-testnet": {
+    "EventFactory": {
+      "address": "0x861cd02B0c0043107C6b4DA92B0C2C9d2e0D4aFC",
+      "startBlock": 0
+    },
+    "TicketFactory": {
+      "address": "0x499641755BA01939A7bA1F8b9b239FFC1EBAB503"
+    },
+    "LiveTipping": {
+      "address": "0x2b54E6F4c67dD32D84Fd3d3E314a7AB50bE1446d"
+    }
+  }
+}
