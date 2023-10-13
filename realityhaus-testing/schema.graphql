@@ -1,6 +1,6 @@
-type Event {
-  eventId: BigInt!
-  creator: Bytes!
+type Event @entity {
+  id: ID!
+  creator: Creator!
   startTime: BigInt!
   owner: Bytes!
   metadata: String!
@@ -15,27 +15,30 @@ type Event {
   highestTip: BigInt!
 }
 
-type Ticket {
+type Ticket @entity {
+  id: ID!
   eventId: BigInt!
-  ticketId: BigInt!
-  owner: Bytes!
+  owner: User!
 }
 
-type Tip {
+type Tip @entity(immutable: true) {
+  id: ID!
   eventId: BigInt!
   tipper: Bytes!
   amount: BigInt!
 }
 
-type Creator {
+type Creator @entity {
+  id: ID!
   creator: Bytes!
   events: [Event!]
   income: BigInt!
 }
 
-type User {
+type User @entity {
+  id: ID!
   user: Bytes!
   tickets: [Ticket!]
   tips: [Tip!]
-  nfts: [Event]!
+  nfts: [Event!]
 }
