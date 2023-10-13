@@ -27,10 +27,6 @@ export function handleEventCreated(event: EventCreatedEvent): void {
   entity.creator = creator.id;
   entity.startTime = event.params.startTime;
   entity.metadata = event.params.metadata;
-  entity.currentSold = BigInt.fromI32(0);
-  entity.tickets = [];
-  entity.tips = [];
-  entity.highestTip = BigInt.fromI32(0);
   entity.save();
 }
 

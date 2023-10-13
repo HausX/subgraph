@@ -1,0 +1,8 @@
+{
+  "polygon-zkevm-testnet": {
+    "EventFactory": {
+      "address": "0xb3aAFf32d70a2729a393578C3208256827C278B6",
+      "startBlock": 0
+    }
+  }
+}

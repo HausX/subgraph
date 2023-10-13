@@ -10,6 +10,9 @@ type Event @entity {
   currentSold: BigInt!
   ticketPrice: BigInt!
   tickets: [Ticket!]
+  baseTip: BigInt!
+  curatorCut: BigInt!
+  curator: Curator!
   tips: [Tip!]
   highestTipper: Bytes!
   highestTip: BigInt!
@@ -31,6 +34,13 @@ type Tip @entity(immutable: true) {
 type Creator @entity {
   id: ID!
   creator: Bytes!
+  events: [Event!]
+  income: BigInt!
+}
+
+type Curator @entity {
+  id: ID!
+  curator: Bytes!
   events: [Event!]
   income: BigInt!
 }
