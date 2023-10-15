@@ -1,61 +1,54 @@
-type Approval @entity(immutable: true) {
-  id: Bytes!
-  owner: Bytes! # address
-  approved: Bytes! # address
-  tokenId: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+type Event @entity {
+  id: ID!
+  creator: Creator!
+  startTime: BigInt!
+  owner: Bytes!
+  metadata: String!
+  pieceCid: String!
+  streamURI: String!
+  maxTickets: BigInt!
+  currentSold: BigInt!
+  ticketPrice: BigInt!
+  tickets: [Ticket!]
+  baseTip: BigInt!
+  curatorCut: BigInt!
+  curator: Curator!
+  tips: [Tip!]
+  highestTipper: Bytes!
+  highestTip: BigInt!
 }
 
-type ApprovalForAll @entity(immutable: true) {
-  id: Bytes!
-  owner: Bytes! # address
-  operator: Bytes! # address
-  approved: Boolean! # bool
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+type Ticket @entity {
+  id: ID!
+  event: Event!
+  owner: User!
 }
 
-type EventCreated @entity(immutable: true) {
-  id: Bytes!
-  eventId: BigInt! # uint256
-  creator: Bytes! # address
-  curator: Bytes! # address
-  startTime: BigInt! # uint256
-  metadata: String! # string
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+type Tip @entity(immutable: true) {
+  id: ID!
+  eventId: BigInt!
+  tipper: Bytes!
+  amount: BigInt!
 }
 
-type EventEnded @entity(immutable: true) {
-  id: Bytes!
-  eventId: BigInt! # uint256
-  pieceCid: String! # string
-  streamURI: String! # string
-  owner: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+type Creator @entity {
+  id: ID!
+  creator: Bytes!
+  events: [Event!]
+  income: BigInt!
 }
 
-type OwnershipTransferred @entity(immutable: true) {
-  id: Bytes!
-  previousOwner: Bytes! # address
-  newOwner: Bytes! # address
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+type Curator @entity {
+  id: ID!
+  curator: Bytes!
+  events: [Event!]
+  income: BigInt!
 }
 
-type Transfer @entity(immutable: true) {
-  id: Bytes!
-  from: Bytes! # address
-  to: Bytes! # address
-  tokenId: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
+type User @entity {
+  id: ID!
+  user: Bytes!
+  tickets: [Ticket!]
+  tips: [Tip!]
+  nfts: [Event!]
 }
