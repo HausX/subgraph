@@ -2,19 +2,19 @@ type Event @entity {
   id: ID!
   creator: Creator!
   startTime: BigInt!
-  owner: Bytes!
+  owner: User!
   metadata: String!
   pieceCid: String!
   streamURI: String!
   maxTickets: BigInt!
   currentSold: BigInt!
   ticketPrice: BigInt!
-  tickets: [Ticket!]
+  tickets: [Ticket!] @derivedFrom(field: "event")
   baseTip: BigInt!
   curatorCut: BigInt!
   curator: Curator!
-  tips: [Tip!]
-  highestTipper: Bytes!
+  tips: [Tip!] @derivedFrom(field: "eventId")
+  highestTipper: User!
   highestTip: BigInt!
 }
 
@@ -34,21 +34,21 @@ type Tip @entity(immutable: true) {
 type Creator @entity {
   id: ID!
   creator: Bytes!
-  events: [Event!]
+  events: [Event!] @derivedFrom(field: "creator")
   income: BigInt!
 }
 
 type Curator @entity {
   id: ID!
   curator: Bytes!
-  events: [Event!]
+  events: [Event!] @derivedFrom(field: "curator")
   income: BigInt!
 }
 
 type User @entity {
   id: ID!
   user: Bytes!
-  tickets: [Ticket!]
-  tips: [Tip!]
-  nfts: [Event!]
+  tickets: [Ticket!] @derivedFrom(field: "owner")
+  tips: [Tip!] @derivedFrom(field: "tipper")
+  nfts: [Event!] @derivedFrom(field: "owner")
 }

@@ -81,7 +81,7 @@ export function handleTransfer(event: TransferEvent): void {
     if (from != null) {
       let tempNfts = from.nfts;
       if (tempNfts != null) {
-        from.nfts = tempNfts.filter((value) => {
+        from.nfts = tempNfts.filter(function(value) {
           return value != event.params.tokenId.toHexString();
         });
       }
