@@ -1,8 +1,5 @@
 import { BigInt } from "@graphprotocol/graph-ts";
-import {
-  FundsDistributed as FundsDistributedEvent,
-  OwnershipTransferred as OwnershipTransferredEvent,
-} from "../generated/Distributor/Distributor";
+import { FundsDistributed as FundsDistributedEvent } from "../generated/Distributor/Distributor";
 import { Creator, Curator } from "../generated/schema";
 
 export function handleFundsDistributed(event: FundsDistributedEvent): void {

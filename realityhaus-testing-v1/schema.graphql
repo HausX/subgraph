@@ -1,21 +1,21 @@
 type Event @entity {
   id: ID!
-  creator: Creator!
-  startTime: BigInt!
-  owner: User!
-  metadata: String!
-  pieceCid: String!
-  streamURI: String!
-  maxTickets: BigInt!
-  currentSold: BigInt!
-  ticketPrice: BigInt!
+  creator: Creator
+  startTime: BigInt
+  owner: User
+  metadata: String
+  pieceCid: String
+  streamURI: String
+  maxTickets: BigInt
+  currentSold: BigInt
+  ticketPrice: BigInt
   tickets: [Ticket!] @derivedFrom(field: "event")
-  baseTip: BigInt!
-  curatorCut: BigInt!
-  curator: Curator!
+  baseTip: BigInt
+  curatorCut: BigInt
+  curator: Curator
   tips: [Tip!] @derivedFrom(field: "eventId")
-  highestTipper: User!
-  highestTip: BigInt!
+  highestTipper: User
+  highestTip: BigInt
 }
 
 type Ticket @entity {

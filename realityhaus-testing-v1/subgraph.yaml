@@ -24,16 +24,10 @@ dataSources:
         - name: EventFactory
           file: ./abis/EventFactory.json
       eventHandlers:
-        - event: Approval(indexed address,indexed address,indexed uint256)
-          handler: handleApproval
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
         - event: EventCreated(indexed uint256,indexed address,address,uint256,string)
           handler: handleEventCreated
         - event: EventEnded(indexed uint256,string,string,address)
           handler: handleEventEnded
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
       file: ./src/event-factory.ts
@@ -57,8 +51,6 @@ dataSources:
       eventHandlers:
         - event: FundsDistributed(indexed uint256,indexed address,uint256,address,uint256,uint256)
           handler: handleFundsDistributed
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
       file: ./src/distributor.ts
   - kind: ethereum
     name: TicketFactory
@@ -83,20 +75,12 @@ dataSources:
         - name: TicketFactory
           file: ./abis/TicketFactory.json
       eventHandlers:
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: TicketCreated(indexed uint256,uint256,uint256)
           handler: handleTicketCreated
         - event: TicketPurchased(indexed uint256,indexed uint256,address)
           handler: handleTicketPurchased
-        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
-          handler: handleTransferBatch
         - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
           handler: handleTransferSingle
-        - event: URI(string,indexed uint256)
-          handler: handleURI
       file: ./src/ticket-factory.ts
   - kind: ethereum
     name: LiveTipping
@@ -119,8 +103,6 @@ dataSources:
       eventHandlers:
         - event: LiveTippingCreated(indexed uint256,uint256,uint256,uint256)
           handler: handleLiveTippingCreated
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Tipped(indexed uint256,indexed address,uint256,bool)
           handler: handleTipped
       file: ./src/live-tipping.ts

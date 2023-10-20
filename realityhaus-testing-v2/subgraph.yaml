@@ -1,0 +1,39 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: EventFactory
+    network: polygon-zkevm-testnet
+    source:
+      address: "0xc4F783d1F0Be2E52b59E5d1dD6888Ee26c8fE27c"
+      abi: EventFactory
+      startBlock: 0
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - ApprovalForAll
+        - EventCreated
+        - EventEnded
+        - OwnershipTransferred
+        - Transfer
+      abis:
+        - name: EventFactory
+          file: ./abis/EventFactory.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,indexed uint256)
+          handler: handleApproval
+        - event: ApprovalForAll(indexed address,indexed address,bool)
+          handler: handleApprovalForAll
+        - event: EventCreated(indexed uint256,indexed address,address,uint256,string)
+          handler: handleEventCreated
+        - event: EventEnded(indexed uint256,string,string,address)
+          handler: handleEventEnded
+        - event: OwnershipTransferred(indexed address,indexed address)
+          handler: handleOwnershipTransferred
+        - event: Transfer(indexed address,indexed address,indexed uint256)
+          handler: handleTransfer
+      file: ./src/event-factory.ts

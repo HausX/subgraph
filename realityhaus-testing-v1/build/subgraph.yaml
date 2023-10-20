@@ -83,20 +83,12 @@ dataSources:
         - name: TicketFactory
           file: TicketFactory\abis\TicketFactory.json
       eventHandlers:
-        - event: ApprovalForAll(indexed address,indexed address,bool)
-          handler: handleApprovalForAll
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: TicketCreated(indexed uint256,uint256,uint256)
           handler: handleTicketCreated
         - event: TicketPurchased(indexed uint256,indexed uint256,address)
           handler: handleTicketPurchased
-        - event: TransferBatch(indexed address,indexed address,indexed address,uint256[],uint256[])
-          handler: handleTransferBatch
         - event: TransferSingle(indexed address,indexed address,indexed address,uint256,uint256)
           handler: handleTransferSingle
-        - event: URI(string,indexed uint256)
-          handler: handleURI
       file: TicketFactory\TicketFactory.wasm
   - kind: ethereum
     name: LiveTipping
@@ -119,8 +111,6 @@ dataSources:
       eventHandlers:
         - event: LiveTippingCreated(indexed uint256,uint256,uint256,uint256)
           handler: handleLiveTippingCreated
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
         - event: Tipped(indexed uint256,indexed address,uint256,bool)
           handler: handleTipped
       file: LiveTipping\LiveTipping.wasm
