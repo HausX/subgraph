@@ -1,6 +1,6 @@
 specVersion: 0.0.5
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: EventFactory
@@ -22,7 +22,7 @@ dataSources:
         - Transfer
       abis:
         - name: EventFactory
-          file: ./abis/EventFactory.json
+          file: EventFactory\abis\EventFactory.json
       eventHandlers:
         - event: EventCreated(indexed uint256,indexed address,address,uint256,string)
           handler: handleEventCreated
@@ -30,7 +30,7 @@ dataSources:
           handler: handleEventEnded
         - event: Transfer(indexed address,indexed address,indexed uint256)
           handler: handleTransfer
-      file: ./src/event-factory.ts
+      file: EventFactory\EventFactory.wasm
   - kind: ethereum
     name: TicketFactory
     network: polygon-zkevm-testnet
@@ -53,7 +53,7 @@ dataSources:
         - URI
       abis:
         - name: TicketFactory
-          file: ./abis/TicketFactory.json
+          file: TicketFactory\abis\TicketFactory.json
       eventHandlers:
         - event: TicketCreated(indexed uint256,uint256,uint256)
           handler: handleTicketCreated
@@ -61,7 +61,7 @@ dataSources:
           handler: handleTicketPurchased
         - event: TicketTransferred(indexed uint256,indexed uint256,address,address)
           handler: handleTicketTransferred
-      file: ./src/ticket-factory.ts
+      file: TicketFactory\TicketFactory.wasm
   - kind: ethereum
     name: LiveTipping
     network: polygon-zkevm-testnet
@@ -79,13 +79,13 @@ dataSources:
         - Tipped
       abis:
         - name: LiveTipping
-          file: ./abis/LiveTipping.json
+          file: LiveTipping\abis\LiveTipping.json
       eventHandlers:
         - event: LiveTippingCreated(indexed uint256,uint256,uint256,uint256)
           handler: handleLiveTippingCreated
         - event: Tipped(indexed uint256,indexed address,uint256,bool)
           handler: handleTipped
-      file: ./src/live-tipping.ts
+      file: LiveTipping\LiveTipping.wasm
   - kind: ethereum
     name: Distributor
     network: polygon-zkevm-testnet
@@ -102,8 +102,8 @@ dataSources:
         - DistributorOwnershipTransferred
       abis:
         - name: Distributor
-          file: ./abis/Distributor.json
+          file: Distributor\abis\Distributor.json
       eventHandlers:
         - event: FundsDistributed(indexed uint256,indexed address,uint256,address,uint256,uint256)
           handler: handleFundsDistributed
-      file: ./src/distributor.ts
+      file: Distributor\Distributor.wasm

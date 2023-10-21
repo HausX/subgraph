@@ -3,6 +3,15 @@
     "EventFactory": {
       "address": "0xc4F783d1F0Be2E52b59E5d1dD6888Ee26c8fE27c",
       "startBlock": 0
+    },
+    "TicketFactory": {
+      "address": "0x1f895309544911B2cF852Eb1cC1dddcB6E6CC248"
+    },
+    "LiveTipping": {
+      "address": "0x0AE7d655Cda406c5b73Ea76855e2cE6aC3812a8E"
+    },
+    "Distributor": {
+      "address": "0x5B66F6276D1784eD5C5e65566683Bc003758219C"
     }
   }
 }
